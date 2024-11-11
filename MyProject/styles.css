@@ -1,7 +1,12 @@
-
-:root{
-    --verde: #56e801 
+:root {
+    --teal: #00796b;
+    --aq-blue: #00bcd4;
+    --li-grey: #eceff1;
+    --md-grey: #212121;
+    --dark-teal: #005f50; 
+    --text-color: #005f50; 
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,31 +15,40 @@
 
 /* Stiluri generale */
 body {
-    font-family: Arial, sans-serif;
-    color: var(--verde);
-    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color); 
+    background-color: var(--li-grey); 
 }
 
 /* Header */
 header {
-    background-color: var(--verde);
-    color: black;
-}
-footer{
-    display: flex;
-    color: var(--verde);
-    flex-wrap:wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+    background-color: var(--teal); 
+    color: var(--li-grey); 
 }
 
+/* Footer */
+footer {
+    display: flex;
+    color: var(--aq-blue); 
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10em;
+}
+/*Culoarea linkului*/
+article a{
+    color: var(--teal);
+    
+}
+article a:hover{
+    color: var(--dark-teal);
+}
 /* Meniul de navigare */
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Permite elementelor sa se aseze pe mai multe randuri */
+    flex-wrap: wrap; 
 }
 
 nav ul li {
@@ -44,20 +58,20 @@ nav ul li {
 nav ul li a {
     display: block;
     padding: 15px;
-    color: black;
+    color: var(--li-grey); 
     text-decoration: none;
 }
 
 /* Stiluri la hover pentru link-uri */
 nav ul li a:hover {
-    background: rgb(24, 147, 0);
+    background: var(--dark-teal); 
 }
 
 /* Meniul dropdown */
 nav ul li .dropdown {
     display: none;
     position: absolute;
-    background-color: rgb(24,80,0);
+    background-color: var(--dark-teal); 
     padding: 0;
     z-index: 1;
 }
@@ -72,12 +86,13 @@ nav ul li:hover .dropdown {
 
 /* Containerul principal */
 main {
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px;
-    min-height: calc(100vh-100px);
+    margin-top: 5em;
 }
 
 /* Titlu principal */
@@ -91,7 +106,8 @@ h1 {
     display: flex;
     flex-direction: row; 
     justify-content: center; 
-    gap: 20px; 
+    gap: 3em;
+    margin-top: 5em; 
     width: 200px;
     height: 200px;
 }
@@ -128,7 +144,7 @@ h1 {
         transform: scale(1); /* Dimensiunea normală */
     }
     100% {
-        transform: scale(1.1); /* Mărire ușoară */
+        transform: scale(1.1); /* Marire usoara */
     }
 }
 .image-container:hover .hover-image {
@@ -146,32 +162,32 @@ h1 {
     }
 
     .image-container {
-        flex-direction: column; /* Afișează imaginile pe o singură coloană */
-        align-items: center; /* Centrează imaginile pe mijlocul paginii */
-        gap: 10px; /* Ajustează spațiul între imagini, după cum dorești */
+        flex-direction: column; 
+        align-items: center; 
+        gap: 10px; 
         margin-top: 150px;
     }
 
     .hover-image {
-        width: 80%; /* Ajustează lățimea imaginii pentru ecrane mici */
+        width: 80%; 
         height: auto;
-    
-    footer{
-        padding: 20px;
-        background-color: var(--verde);
-        text-align: center;
-        width: 100%;
-        margin-top: 600px;
+    }
+
+    body {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 1em; 
     }
 }
-}
+
 /* Animație cu :after */
 nav ul li a:after {
     content: '';
     display: grid;
     width: 100%;
     height: 2px;
-    background: black;
+    background: var(--md-grey); 
     transition: width 0.3s ease;
     width: 0;
 }
