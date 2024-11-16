@@ -144,7 +144,7 @@ h1 {
         transform: scale(1); /* Dimensiunea normală */
     }
     100% {
-        transform: scale(1.1); /* Marire usoara */
+        transform: scale(1.1); /* Marire imaginii*/
     }
 }
 .image-container:hover .hover-image {
@@ -154,7 +154,7 @@ h1 {
 /* Responsive */
 @media (max-width: 40em) {
     nav ul {
-        flex-direction: column; /* Meniul devine vertical pe ecrane mici */
+        flex-direction: column; 
     }
     
     h1 {
@@ -181,9 +181,8 @@ h1 {
     }
 }
 
-/* Animație cu :after */
+/* Animație :after */
 nav ul li a:after {
-    content: '';
     display: grid;
     width: 100%;
     height: 2px;
