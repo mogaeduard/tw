@@ -1,5 +1,5 @@
 // tema light/dark
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = function () {
   const themeToggle = document.getElementById("theme-toggle");
 
   // default este "light"
@@ -26,10 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
       updateThemeDisplay();
     });
   }
-});
 
-// gestionare hobby-uri
-document.addEventListener("DOMContentLoaded", () => {
+  // gestionare hobby-uri
   const addHobbyButton = document.getElementById("add-hobby");
   const hobbyList = document.getElementById("hobby-list");
 
@@ -68,10 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-});
 
-// login și descarcarea CV-ului
-document.addEventListener("DOMContentLoaded", () => {
+  // login și descarcarea CV-ului
   const loginForm = document.getElementById("login-form");
   const successMessage = document.getElementById("success-message");
 
@@ -112,11 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch((error) => console.error("Eroare la obținerea utilizatorilor:", error));
     });
   }
-});
 
-// Gestionarea formularului de înregistrare
-document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.getElementById("login-form");
+  // Gestionarea formularului de înregistrare
   const registerForm = document.getElementById("register-form");
   const showRegisterButton = document.getElementById("show-register");
   const registerMessage = document.getElementById("register-message");
@@ -170,22 +163,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2000);
     });
   }
-});
 
-// culori random pe hover la butoane
-document.querySelectorAll("button").forEach(button => {
-  const originalColor = button.style.backgroundColor; // pastreaza culoarea initiala
-  button.addEventListener("mouseenter", () => {
-    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    button.style.backgroundColor = randomColor;
+  // culori random pe hover la butoane
+  document.querySelectorAll("button").forEach(button => {
+    const originalColor = button.style.backgroundColor; // pastreaza culoarea initiala
+    button.addEventListener("mouseenter", () => {
+      const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+      button.style.backgroundColor = randomColor;
+    });
+    button.addEventListener("mouseleave", () => {
+      button.style.backgroundColor = originalColor; // revine la culoarea initiala
+    });
   });
-  button.addEventListener("mouseleave", () => {
-    button.style.backgroundColor = originalColor; // revine la culoarea inițială
-  });
-});
 
-// salutul în functie de ora atunci cand intri pe pagina index.html
-document.addEventListener("DOMContentLoaded", () => {
+  // salutul în functie de ora atunci cand intri pe pagina index.html
   if (window.location.pathname.endsWith("index.html")) {
     // verifica dacă mesajul a fost deja afisat in sesiunea curenta
     const hasShownGreeting = sessionStorage.getItem("shownGreeting");
@@ -199,10 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
       sessionStorage.setItem("shownGreeting", "true");
     }
   }
-});
 
-// schimbarea fontului textului "Bine ai venit pe site-ul meu!" la fiecare 1.5 secunde
-document.addEventListener("DOMContentLoaded", () => {
+  // schimbarea fontului textului "Bine ai venit pe site-ul meu!" la fiecare 1.5 secunde
   const welcomeText = document.getElementById("welcome-text");
 
   if (welcomeText) {
@@ -222,4 +211,4 @@ document.addEventListener("DOMContentLoaded", () => {
       welcomeText.style.fontFamily = fonts[currentFontIndex];
     }, 1500); 
   }
-});
+};
