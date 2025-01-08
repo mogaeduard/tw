@@ -35,7 +35,7 @@ footer {
     align-items: center;
     margin-top: 10em;
 }
-/*Culoarea linkului*/
+
 article a{
     color: var(--teal);
     
@@ -117,7 +117,7 @@ h1 {
     width: 100%;
     height: auto;
     opacity: 0; 
-    transition: opacity 0.5s ease-in-out; /* Tranziție pentru opacitate */
+    transition: opacity 0.5s ease-in-out; /* Tranzitie pentru opacitate */
 }
 
 /* Efectul de hover pe containerul de imagini */
@@ -138,13 +138,13 @@ h1 {
     transition-delay: 0.4s; 
 }
 
-/* Animația la hover */
+/* Animatia la hover */
 @keyframes scaleUp {
     0% {
-        transform: scale(1); /* Dimensiunea normală */
+        transform: scale(1); /* Dimensiunea normala */
     }
     100% {
-        transform: scale(1.1); /* Marire imaginii*/
+        transform: scale(1.1); /* Marire imagini*/
     }
 }
 .image-container:hover .hover-image {
@@ -181,7 +181,7 @@ h1 {
     }
 }
 
-/* Animație :after */
+/* Animatie :after */
 nav ul li a:after {
     display: grid;
     width: 100%;
@@ -194,3 +194,44 @@ nav ul li a:after {
 nav ul li a:hover:after {
     width: 100%;
 }
+
+/*Partea de JS, iar mai jos avem variabilele pentru schimbarea tematicii.*/
+body.light {
+    background-color: var(--li-grey);
+    color: var(--text-color);
+}
+
+body.dark {
+    background-color: #212121;
+    color: #ffffff;
+}
+
+/* butoane */
+button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    padding: 10px 20px;
+    border: 2px solid var(--teal);
+    border-radius: 5px;
+    background-color: var(--dark-teal);
+    color: var(--li-grey);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* efect hover pentru butoane */
+button:hover {
+    background-color: var(--aq-blue);
+    color: var(--li-grey);
+    transform: scale(1.05); 
+}
+
+/* pozitionarea butonului de schimbarea a tematicii */
+#theme-toggle {
+    position: absolute;
+    top: 3px;
+    right: 20px; 
+    z-index: 100; 
+}
+
+

@@ -7,7 +7,6 @@
     <title>Cv-ul meu</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/icon1.ico" type="images/icon">
-   
 </head>
 <body>
     <header>
@@ -19,9 +18,35 @@
     </header>
     <main>
         <h1>CV-ul Meu</h1>
-        <p>Descarcă CV-ul meu folosind linkul de mai jos:</p>
-        <article><a href="https://drive.google.com/file/d/1oTpzoMdw8U38xVsFMHiyuersPhaKj8Jp/view?usp=sharing" target="_blank">
-        <download>Download</a></article>
+        <p>Descarcă CV-ul meu completând formularul de mai jos:</p>
+        <form id="login-form">
+            <label for="username">Nume utilizator:</label>
+            <input type="text" id="username" required>
+    
+            <label for="password">Parolă:</label>
+            <input type="password" id="password" required>
+    
+            <button type="submit">Autentificare</button>
+            <button type="button" id="show-register">Sign Up!</button>
+        </form>
+    
+        <form id="register-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <label for="register-email">Email:</label>
+            <input type="text" id="register-email" required>
+    
+            <label for="register-password">Parolă:</label>
+            <input type="password" id="register-password" required>
+    
+            <button type="submit">Register</button>
+            <p id="register-message"></p>
+        </form>
+    
+        <div id="success-message" style="display: none;">
+            <p>Login reușit! Poți descărca acum CV-ul.</p>
+            <a href="https://drive.google.com/file/d/1oTpzoMdw8U38xVsFMHiyuersPhaKj8Jp/view?usp=sharing" download>Descarcă CV-ul</a>
+        </div>
+    
         <h2>Despre CV-ul meu</h2>
         <p>Aici poți găsi informații despre educația, experiența și abilitățile mele.</p>
         <ul>
@@ -34,5 +59,7 @@
     <footer>
         <p>&copy; tw2425 - Moga Eduard Andrei</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
