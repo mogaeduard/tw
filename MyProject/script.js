@@ -6,6 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentTheme = localStorage.getItem("theme") || "light";
   document.body.className = currentTheme;
 
+  const themeDisplay = document.createElement("p"); // Afișează tema curentă
+  document.body.appendChild(themeDisplay);
+
+  const updateThemeDisplay = () => {
+    const currentThemeComputed = getComputedStyle(document.body).backgroundColor;
+    themeDisplay.textContent = `Tema curentă este: ${document.body.className} (${currentThemeComputed})`;
+  };
+
+  updateThemeDisplay();
+
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       const newTheme = document.body.className === "light" ? "dark" : "light";
@@ -13,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // salvează tema nouă 
       localStorage.setItem("theme", newTheme);
+      updateThemeDisplay();
     });
   }
 });
@@ -70,16 +81,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      // obtine utilizatorii din localStorage
+      // obține utilizatorii din localStorage
       const localUsers = JSON.parse(localStorage.getItem("users")) || [];
+      const localUser = localUsers.find(
+        (u) => u.email === username && u.password === password
+      );
 
-      // verifica utilizatorii atat din users.json, cat si din localStorage
+      if (localUser) {
+        // Dacă utilizatorul este în localStorage
+        successMessage.style.display = "block";
+        loginForm.style.display = "none";
+        return;
+      }
+
+      // verifică utilizatorii din JSON
       fetch("users.json")
         .then((response) => response.json())
-        .then((users) => {
-          const allUsers = [...users, ...localUsers];
-          const user = allUsers.find(
-            (u) => u.email === username && u.password === password
+        .then((jsonUsers) => {
+          const user = jsonUsers.find(
+            (u) => u.username === username && u.password === password
           );
 
           if (user) {
@@ -89,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Nume utilizator sau parolă greșită!");
           }
         })
-        .catch((error) => console.error("Eroare:", error));
+        .catch((error) => console.error("Eroare la obținerea utilizatorilor:", error));
     });
   }
 });
@@ -166,10 +186,18 @@ document.querySelectorAll("button").forEach(button => {
 
 // salutul în functie de ora atunci cand intri pe pagina index.html
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.pathname.endsWith("index.html")) { 
-    const hour = new Date().getHours();
-    const greeting = hour < 12 ? "Bună dimineața" : hour < 18 ? "Bună ziua" : "Bună seara";
-    alert(greeting + ", bine ai venit!");
+  if (window.location.pathname.endsWith("index.html")) {
+    // verifica dacă mesajul a fost deja afisat in sesiunea curenta
+    const hasShownGreeting = sessionStorage.getItem("shownGreeting");
+
+    if (!hasShownGreeting) {
+      const hour = new Date().getHours();
+      const greeting = hour < 12 ? "Bună dimineața" : hour < 18 ? "Bună ziua" : "Bună seara";
+      alert(greeting + ", bine ai venit!");
+
+      // marchează mesajul ca afisat
+      sessionStorage.setItem("shownGreeting", "true");
+    }
   }
 });
 
