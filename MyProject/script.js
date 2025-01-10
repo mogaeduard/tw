@@ -182,9 +182,12 @@ window.onload = function () {
     const hasShownGreeting = sessionStorage.getItem("shownGreeting");
 
     if (!hasShownGreeting) {
-      const hour = new Date().getHours();
+      const now = new Date();
+      const hour = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
       const greeting = hour < 12 ? "Bună dimineața" : hour < 18 ? "Bună ziua" : "Bună seara";
-      alert(greeting + ", bine ai venit!");
+      alert(`${greeting}, ceasul este ${hour}:${minutes}:${seconds}`);
 
       // marchează mesajul ca afisat
       sessionStorage.setItem("shownGreeting", "true");
